@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFinder - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #080710;
+            color: #fff;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-bar {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 200px);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .link {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .welcome-text {
+            color: #555;
+            padding: 10px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .main-content h2 {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ShopFinder</h1>
+    </header>
+
+    <nav>
+        <div>
+            <h2>ShopFinder</h2>
+            <a href="/userdashboard/" class="link">Home</a>
+            <a href="#" class="link">My Favorites</a>
+            <a href="#" class="link">Categories</a>
+            <a href="#" class="link">Profile</a>
+        </div>
+        <div class="nav-links">
+            <input type="text" class="search-bar" placeholder="Search Shops">
+            <a href="#" class="link">Settings</a>
+            <a href="/" class="link">Logout</a>
+        </div>
+    </nav>
+
+    <div class="welcome-text">
+        <h2>Welcome to ShopFinder!</h2>
+        <p>Your ultimate destination for discovering the best shops in your local area.</p>
+    </div>
+
+    <div class="main-content">
+        <h2>Welcome to your ShopFinder Dashboard!</h2>
+        <p>This is your personalized dashboard where you can manage your account, explore shops, and more.</p>
+    </div>
+</body>
+</html>
+
