@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required
 def ShopFinder(request):
     return render(request, "index.html")
 
+def signinOptions(request):
+    return render(request, "signinOptions.html")
+
 
 def SignIn(request):
      if request.method=='POST':
@@ -50,3 +53,34 @@ def AboutUs(request):
 
 def UserDashboard(request):
     return render(request, "userdashboard.html")
+
+def ShopOwnerDashboard(request):
+    return render(request, "shopownerdashboard.html")
+
+
+
+def shop_listing(request):
+    # Assume you have some logic here to fetch shop data from your database
+    shops = Shop.objects.all()
+    
+     
+    return render(request, 'shop_listing.html', {'shops': shops})
+
+
+
+from .forms import ShopForm
+
+def create_shop(request):
+    if request.method == 'POST':
+        form = ShopForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('shopownerdash')  # Redirect to a success URL
+    else:
+        form = ShopForm()
+    return render(request, 'create_shop.html', {'form': form})
+
+
+
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .shop-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+        .shop-box {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: calc(33.33% - 20px); /* Adjust this as needed */
+            text-align: center;
+        }
+        .shop-box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .shop-box h2 {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .shop-box p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shop List</h1>
+
+    <!-- Form for selecting shopping complexes and districts -->
+    <form id="shop-filter-form">
+        <label for="shopping-complex">Select Shopping Complex:</label>
+        <select id="shopping-complex" name="shopping-complex">
+            <option value="all">All Shopping Complexes</option>
+            <option value="shopping-complex-1">Shopping Complex 1</option>
+            <option value="shopping-complex-2">Shopping Complex 2</option>
+            <!-- Add more shopping complexes as needed -->
+        </select>
+
+        <label for="district">Select District:</label>
+        <select id="district" name="district">
+            <option value="all">All Districts</option>
+            <option value="district-1">District 1</option>
+            <option value="district-2">District 2</option>
+            <!-- Add more districts as needed -->
+        </select>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Shop listing -->
+    <div class="shop-list">
+        {% for shop in shops %}
+        <div class="shop-box">
+            <img src="{{ shop.image_url }}" alt="{{ shop.name }}">
+            <h2>{{ shop.name }}</h2>
+            <p>{{ shop.address }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -21,9 +21,13 @@ from ShopFinder.views import *
 urlpatterns = [
 
     path('', ShopFinder, name="ShopFinder"),
+    path('signinoptions/', signinOptions, name="SignIn Options"),
     path('signin/', SignIn, name="SignIn"),
     path('signup/', SignUp, name="SignUp"),
     path('aboutus/', AboutUs, name="AboutUs"),
     path('userdashboard/', UserDashboard, name="User Dashboard"),
+    path('shopownerdash/', ShopOwnerDashboard, name='Shop Owner Dashboard'),
+    path('shoplisting/', shop_listing, name='shop_listing'),
+    path('addshopform/', create_shop, name='create_shop'),
     path('admin/', admin.site.urls),
 ]

@@ -17,7 +17,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: #F4F6F6;
 }
 .background{
     width: 430px;
@@ -51,22 +51,22 @@ body{
     bottom: -80px;
 }
 form{
-    height: 600px;
+    height: 630px;
     width: 450px;
-    background-color: rgba(255,255,255,0.13);
+    background-color: black;
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
+    border: 2px solid black;
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: #D5D8DC;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -88,12 +88,13 @@ input{
     display: block;
     height: 40px;
     width: 100%;
-    background-color: rgba(255,255,255,0.07);
+    background-color: #ffffff;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 2px;
     font-size: 14px;
     font-weight: 300;
+    color: #000; /* Change text color to black */
 }
 ::placeholder{
     color: #e5e5e5;
@@ -141,7 +142,7 @@ button{
     </div>
     <form action="" method="post">
         {% csrf_token %} 
-        <h3>Signup Here</h3>
+        <h3>SignUp Here</h3>
 
         <label for="username">Username</label>
         <input type="text" placeholder="Username" name="username" id="username">
@@ -153,11 +154,11 @@ button{
         <input type="password" placeholder="Password" id="password1" name="password1">
 
 
-        <label for="password2">Confrom Password</label>
-        <input type="password" placeholder="Confrom Password" id="password2" name="password2">
-        <button type="submit">Signup</button>
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <button type="submit">SignUp</button><br>
         
-        <a href="/signin/" >I have already account</a>
+        <a href="/signin/" >I already have an account</a>
     </form>
 </body>
 </html>
