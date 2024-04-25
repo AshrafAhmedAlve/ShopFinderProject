@@ -69,33 +69,98 @@
             font-size: 1rem;
             margin-bottom: 10px;
         }
+        .search-form {
+            margin-bottom: 20px;
+        }
+    
+        .search-input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    
+        .search-button {
+            padding: 10px 20px;
+            background-color: #F1C40F;
+            color: Black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .search-button:hover {
+            background-color: #8B8000;
+        }
+        /* Shop box container */
+        .shop-box {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    
+        /* Shop image */
+        .shop-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        /* Shop name */
+        .shop-box h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    
+        /* Shop address */
+        .shop-box p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    
+        /* Detail and Update buttons */
+        .shop-box a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #F1C40F;
+            color: Black;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-right: 10px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+    
+        .shop-box a:hover {
+            background-color: #8B8000;
+        }
     </style>
 </head>
 <body>
 {% load static %}
     <h1>Shop List</h1>
 
-    <!-- Form for selecting shopping complexes and districts -->
-    <form id="shop-filter-form">
-        <label for="shopping-complex">Select Shopping Complex:</label>
-        <select id="shopping-complex" name="shopping-complex">
-            <option value="all">All Shopping Complexes</option>
-            <option value="shopping-complex-1">Shopping Complex 1</option>
-            <option value="shopping-complex-2">Shopping Complex 2</option>
-            <!-- Add more shopping complexes as needed -->
-        </select>
+    <!-- Form for selecting shopping complexes and districts --> 
 
-        <label for="district">Select District:</label>
-        <select id="district" name="district">
-            <option value="all">All Districts</option>
-            <option value="district-1">District 1</option>
-            <option value="district-2">District 2</option>
-            <!-- Add more districts as needed -->
-        </select>
+<form class="search-form" method="GET" action="{% url 'shop_listing' %}">
+    <input class="search-input" type="text" name="search_query" placeholder="Search by name, address, or shopping complex" value="{{ search_query }}">
+    <select class="search-input" name="shopping_complex">
+        <option value="" {% if not selected_complex %} selected {% endif %}>All Shopping Complexes</option>
+        <!-- Loop through available shopping complexes -->
+        {% for complex in complexes %}
+            <option value="{{ complex }}" {% if selected_complex == complex %} selected {% endif %}>{{ complex }}</option>
+        {% endfor %}
+    </select>
+    
+    <button class="search-button" type="submit">Filter</button>
+</form>
 
-        <button type="submit">Filter</button>
-    </form>
-
+    
     <!-- Shop listing -->
     <div class="shop-list">
         {% for shop in shops %}

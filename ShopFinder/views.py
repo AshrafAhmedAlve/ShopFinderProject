@@ -59,12 +59,35 @@ def ShopOwnerDashboard(request):
 
 
 
+from django.db.models import Q
+
 def shop_listing(request):
-    # Assume you have some logic here to fetch shop data from your database
+    search_query = request.GET.get('search_query')
+    selected_complex = request.GET.get('shopping_complex')
+
     shops = Shop.objects.all()
-    
-     
-    return render(request, 'shop_listing.html', {'shops': shops})
+
+    # Get unique shopping complexes from the database
+    complexes = Shop.objects.values_list('shopping_complex', flat=True).distinct()
+
+    if search_query:
+        shops = shops.filter(
+            Q(name__icontains=search_query) |
+            Q(address__icontains=search_query) |
+            Q(shopping_complex__icontains=search_query)
+        )
+
+    if selected_complex:
+        shops = shops.filter(shopping_complex=selected_complex)
+
+    return render(request, 'shop_listing.html', {
+        'shops': shops,
+        'search_query': search_query,
+        'selected_complex': selected_complex,
+        'complexes': complexes,  # Pass shopping complexes to the template context
+    })
+
+
 
 
 

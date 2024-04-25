@@ -1,4 +1,3 @@
-<!-- shop_detail.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ shop.name }} Detail</title>
     
+    <!-- CSS Styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .shop-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .shop-details {
+            margin-bottom: 20px;
+        }
+
+        .shop-details h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .shop-details p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .update-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #F1C40F;
+            color: black;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .update-button:hover {
+            background-color: #8B8000;
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ shop.name }} Details</h1>
-    <img src="{{ shop.image.url }}" alt="{{ shop.name }}">
-    <p><strong>Address:</strong> {{ shop.address }}</p>
-    <p><strong>Phone Number:</strong> {{ shop.phone_number }}</p>
-    <p><strong>Description:</strong> {{ shop.description }}</p>
-    <p><strong>Shopping Complex:</strong> {{ shop.shopping_complex }}</p>
-    <p><strong>District:</strong> {{ shop.district }}</p>
-    <a href="{% url 'update_shop' shop.id %}">Update Shop</a>
+    <div class="container">
+        <h1>{{ shop.name }} Details</h1>
+        <img class="shop-image" src="{{ shop.image.url }}" alt="{{ shop.name }}">
+        <div class="shop-details">
+            <h2>{{ shop.name }}</h2>
+            <p><strong>Address:</strong> {{ shop.address }}</p>
+            <p><strong>Phone Number:</strong> {{ shop.phone_number }}</p>
+            <p><strong>Description:</strong> {{ shop.description }}</p>
+            <p><strong>Shopping Complex:</strong> {{ shop.shopping_complex }}</p>
+            <p><strong>District:</strong> {{ shop.district }}</p>
+        </div>
+        <a class="update-button" href="{% url 'update_shop' shop.id %}">Update Shop</a>
+    </div>
 </body>
 </html>
