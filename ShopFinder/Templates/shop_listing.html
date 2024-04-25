@@ -72,6 +72,7 @@
     </style>
 </head>
 <body>
+{% load static %}
     <h1>Shop List</h1>
 
     <!-- Form for selecting shopping complexes and districts -->
@@ -99,9 +100,14 @@
     <div class="shop-list">
         {% for shop in shops %}
         <div class="shop-box">
-            <img src="{{ shop.image_url }}" alt="{{ shop.name }}">
+            <img src="{{ shop.image.url }}" alt="{{ shop.name }}">
             <h2>{{ shop.name }}</h2>
             <p>{{ shop.address }}</p>
+            <!-- Detail button -->
+        <a href="{% url 'shop_detail' shop.id %}">Details</a>
+        <!-- Update button -->
+        <a href="{% url 'update_shop' shop.id %}">Update</a>
+             
         </div>
         {% endfor %}
     </div>

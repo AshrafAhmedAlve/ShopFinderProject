@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
+from ShopFinder import views
 from ShopFinder.views import *
+
+
+from django.conf.urls.static import static
+from django.conf import settings
+from django.conf import settings 
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
 
@@ -30,4 +39,9 @@ urlpatterns = [
     path('shoplisting/', shop_listing, name='shop_listing'),
     path('addshopform/', create_shop, name='create_shop'),
     path('admin/', admin.site.urls),
+    path('update-shop/<int:shop_id>/', views.update_shop, name='update_shop'),
+    path('shop-detail/<int:shop_id>/', views.shop_detail, name='shop_detail'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

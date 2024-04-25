@@ -1,0 +1,19 @@
+<!-- shop_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ shop.name }} Detail</title>
+</head>
+<body>
+    <h1>{{ shop.name }} Details</h1>
+    <img src="{{ shop.image.url }}" alt="{{ shop.name }}">
+    <p><strong>Address:</strong> {{ shop.address }}</p>
+    <p><strong>Phone Number:</strong> {{ shop.phone_number }}</p>
+    <p><strong>Description:</strong> {{ shop.description }}</p>
+    <p><strong>Shopping Complex:</strong> {{ shop.shopping_complex }}</p>
+    <p><strong>District:</strong> {{ shop.district }}</p>
+    <a href="{% url 'update_shop' shop.id %}">Update Shop</a>
+</body>
+</html>

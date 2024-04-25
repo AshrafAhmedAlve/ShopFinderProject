@@ -25,6 +25,27 @@ class Shop(models.Model):
     def __str__(self) :
         return self.name
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import ShopForm
+from .models import Shop
+
+def update_shop(request, shop_id):
+    shop = get_object_or_404(Shop, id=shop_id)
+    if request.method == 'POST':
+        form = ShopForm(request.POST, request.FILES, instance=shop)
+        if form.is_valid():
+            form.save()
+            return redirect('shop_listing')  # Redirect to shop listing page
+    else:
+        form = ShopForm(instance=shop)
+    return render(request, 'create_shop.html', {'form': form})
+
+
+def shop_detail(request, shop_id):
+    shop = get_object_or_404(Shop, id=shop_id)
+    return render(request, 'shop_detail.html', {'shop': shop})
+
+
 
 
 

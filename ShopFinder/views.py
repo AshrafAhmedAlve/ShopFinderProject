@@ -75,10 +75,31 @@ def create_shop(request):
         form = ShopForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('shopownerdash')  # Redirect to a success URL
+            return redirect('Shop Owner Dashboard')  # Redirect to a success URL
     else:
         form = ShopForm()
     return render(request, 'create_shop.html', {'form': form})
+
+
+from django.shortcuts import render, redirect
+from .models import Shop
+from .forms import ShopForm
+
+def update_shop(request, shop_id):
+    shop = Shop.objects.get(pk=shop_id)
+    if request.method == 'POST':
+        form = ShopForm(request.POST, instance=shop)
+        if form.is_valid():
+            form.save()
+            return redirect('shop_details', shop_id=shop_id)
+    else:
+        form = ShopForm(instance=shop)
+    return render(request, 'update_shop.html', {'form': form, 'shop': shop})
+
+def shop_details(request, shop_id):
+    shop = Shop.objects.get(pk=shop_id)
+    return render(request, 'shop_details.html', {'shop': shop})
+
 
 
 
