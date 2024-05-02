@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from ShopFinder import views
+from ShopFinder import views 
 from ShopFinder.views import *
 
 
@@ -41,6 +41,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('update-shop/<int:shop_id>/', views.update_shop, name='update_shop'),
     path('shop-detail/<int:shop_id>/', views.shop_detail, name='shop_detail'),
+
+    path('add-review/<int:shop_id>/', views.add_review, name='add_review'),
+    path('shop-reviews/<int:shop_id>/', views.shop_reviews, name='shop_reviews'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

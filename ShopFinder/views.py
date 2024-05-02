@@ -124,6 +124,28 @@ def shop_detail(request, shop_id):
     return render(request, 'shop_detail.html', {'shop': shop})
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Shop
+
+def add_review(request, shop_id):
+    if request.method == 'POST':
+        shop = get_object_or_404(Shop, pk=shop_id)
+        review = request.POST.get('review')
+        if review:
+            if shop.reviews:
+                shop.reviews += '\n' + review
+            else:
+                shop.reviews = review
+            shop.save()
+    return redirect('shop_listing')
+
+def shop_reviews(request, shop_id):
+    shop = get_object_or_404(Shop, pk=shop_id)
+    reviews = shop.reviews.split("\n") if shop.reviews else []
+    return render(request, 'shop_reviews.html', {'shop': shop, 'reviews': reviews})
+
+
+
 
 
 

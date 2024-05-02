@@ -20,6 +20,9 @@ class Shop(models.Model):
     image = models.ImageField(upload_to='shop_images/',blank=True, null=True, default='shop_images/default.jpg')
     shopping_complex = models.TextField(blank=True, null=True)
     district = models.CharField(max_length=100)
+     # Add a field for reviews
+    reviews = models.TextField(blank=True, null=True)
+
 
 
     def __str__(self) :
